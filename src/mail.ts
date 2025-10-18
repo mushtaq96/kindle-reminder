@@ -66,7 +66,7 @@ const generateHTML = (highlights: Highlight[]) => {
                                     <tbody>
                                       <tr>
                                         <td style="width:50px;">
-                                          <img height="auto" src="https://github.com/mushtaq96/kindle-reminder/main/logo.png" alt="Logo" title="Logo" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:90%;font-size:13px;" width="20">
+                                          <img height="auto" src="https://raw.githubusercontent.com/mushtaq96/kindle-reminder/main/logo.png" alt="Logo" title="Logo" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:90%;font-size:13px;" width="20">
                                         </td>
                                       </tr>
                                     </tbody>
