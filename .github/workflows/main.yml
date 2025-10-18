@@ -1,0 +1,34 @@
+name: Scheduled Email
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    #   Eg: Runs at 04:00 UTC every day.
+    - cron: "0 4 * * *"
+
+jobs:
+  email:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 8
+
+      - name: Node LTS versions
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "pnpm"
+
+      - name: Install Node.js dependencies
+        run: |
+          pnpm i --no-frozen-lockfile
+
+      - env:
+          SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+          SENDER_APP_PASSWORD: ${{ secrets.SENDER_APP_PASSWORD }}
+          RECEIVING_EMAIL: ${{ secrets.RECEIVING_EMAIL }}
+          NO_OF_HIGHLIGHTS: ${{ secrets.NO_OF_HIGHLIGHTS }}
+        run: pnpm run start
