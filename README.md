@@ -2,7 +2,7 @@
 
 📱 Your personal Kindle highlights companion - sending your favorite moments directly to your inbox
 
-[![GitHub Actions Status](https://github.com/mushtaq96/kindle-reminder/workflows/Build/badge.svg)](https://github.com/mushtaq96/kindle-reminder/actions)
+[![GitHub Actions Status](https://github.com/mushtaq96/kindle-reminder/workflows/Scheduled%20Email/badge.svg)](https://github.com/mushtaq96/kindle-reminder/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 ## What is it?
