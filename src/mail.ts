@@ -199,7 +199,7 @@ const generateHTML = (highlights: Highlight[]) => {
                                               </table>
                                             </td>
                                             <td style="vertical-align:middle;padding:4px 4px 4px 0px;">
-                                              <a href="https://github.com/tnmyk/remind-kindle" style="color:#333333;font-size:13px;font-weight:normal;font-family:lucida Grande,Verdana,Microsoft YaHei;line-height:22px;text-decoration:none;" target="_blank"> Github </a>
+                                              <a href="https://github.com/mushtaq96/kindle-reminder" style="color:#333333;font-size:13px;font-weight:normal;font-family:lucida Grande,Verdana,Microsoft YaHei;line-height:22px;text-decoration:none;" target="_blank"> Github </a>
                                             </td>
                                           </tr>
                                         </tbody>
