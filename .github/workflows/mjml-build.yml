@@ -17,7 +17,4 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Compile MJML to HTML
-        uses: pavelkocourek/action-mjml-templates@v1
-        with:
-          input: "src/templates" # folder for .mjml emails
-          output: "src/templates/build" # compiled .html output
+        run: npx mjml src/templates/email.mjml -o src/templates/build/email.html
