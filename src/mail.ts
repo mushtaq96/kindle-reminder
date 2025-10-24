@@ -17,15 +17,17 @@ export const email = async (highlights: Highlight[]) => {
   // Read the HTML email template.
   const htmlTemplatePath = path.join("src/templates/build/email.html");
   let html = readFileSync(htmlTemplatePath, "utf-8");
-  // Construct the highlights HTML.
+  // Generate the highlights HTML.
   const highlightHTML = highlights
-    .map(
-      (h) => `<mj-section><mj-column>
-        <mj-text font-size="18px" color="#5E5E5E">${h.bookTitle}</mj-text>
-        <mj-text color="#777777">${h.content}</mj-text>
-      </mj-column></mj-section>`
-    )
-    .join("");
+  .map(
+    (h) => `
+    <div style="margin-bottom: 20px; padding: 10px; background:#FFF8F0; border-radius:8px;">
+      <h3 style="font-family: Helvetica, Arial, sans-serif; color: #5E5E5E; margin: 0 0 5px 0;">${h.bookTitle}</h3>
+      <p style="font-family: Helvetica, Arial, sans-serif; color: #777777; margin:0;">${h.content}</p>
+    </div>`
+  )
+  .join("");
+
   // Insert the highlights into the HTML template.
   html = html.replace("{{highlights}}", highlightHTML);
   // Send the email.
