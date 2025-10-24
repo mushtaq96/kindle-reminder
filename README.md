@@ -99,28 +99,6 @@ Contributions are welcome! Submit a pull request with:
 
 MIT License - see [LICENSE](LICENSE) for details.
 
-### Info About Github Worflows
-
-- Step 1 – Understand what a GitHub Action really is
-  Every .yml file in the .github/workflows folder is an instruction list for GitHub.
-  Think of it like recipes:
-
-One recipe might say “bake cookies every day at 4 AM.”
-
-Another might say “compile icing when someone edits the design.”
-
-Both recipes live in the same kitchen (your repository), but they do different jobs and can run independently.​
-
-- Step 2 – Why two files help
-  Your current file (main.yml) already tells GitHub: “At 4 AM, run code that sends emails.”
-
-The second file (mjml-build.yml) will simply say: “When templates change, prepare pretty emails and save them as HTML.”
-
-If you kept everything inside one file, it would try baking cookies and compiling icing every time—slower, messier, harder to maintain.
-By splitting, you keep actions lightweight and focused.
-
-And GitHub automatically recognizes all \*.yml files inside .github/workflows and runs them as separate but coordinated jobs.
-
 ### 🕓 Scheduling Notes
 
 GitHub Actions schedules use UTC time.

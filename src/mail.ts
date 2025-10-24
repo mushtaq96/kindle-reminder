@@ -28,6 +28,14 @@ export const email = async (highlights: Highlight[]) => {
 };
 
 const generateHTML = (highlights: Highlight[]) => {
+  const now = new Date();
+  const formattedDate = now.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+  const header = `<p style="text-align:center; color:#777; font-size:13px; margin:0;">${formattedDate} • Revisit, Reflect, Grow</p>`;
+
   const highlightsHTML = highlights
     .map((h) => `
       <tr>
@@ -54,6 +62,11 @@ const generateHTML = (highlights: Highlight[]) => {
       </table>
 
       <table align="center" width="100%" style="max-width:600px;background-color:#FFF8F0;margin:0 auto 20px;padding:10px 0;">
+        <tr>
+          <td align="center" style="padding:0 0 15px 0;">
+            ${header}
+          </td>
+        </tr>
         ${highlightsHTML}
       </table>
 
