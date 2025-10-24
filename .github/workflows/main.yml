@@ -26,6 +26,9 @@ jobs:
       - name: Install Node.js dependencies
         run: pnpm i --no-frozen-lockfile
 
+      - name: Create output directory
+        run: mkdir -p src/templates/build
+
       - name: Compile MJML to HTML
         run: npx mjml src/templates/email.mjml -o src/templates/build/email.html
 
