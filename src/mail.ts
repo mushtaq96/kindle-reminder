@@ -14,24 +14,9 @@ export const email = async (highlights: Highlight[]) => {
     service: "gmail",
     auth: { user: SENDER_EMAIL, pass: SENDER_APP_PASSWORD },
   });
-  // Read the HTML email template.
-  const htmlTemplatePath = path.join("src/templates/build/email.html");
-  let html = readFileSync(htmlTemplatePath, "utf-8");
-  // Generate the highlights HTML.
-  const highlightHTML = highlights
-  .map(
-    (h) => `
-    <div style="margin-bottom: 20px; padding: 10px; background:#FFF8F0; border-radius:8px;">
-      <h3 style="font-family: Helvetica, Arial, sans-serif; color: #333333; margin: 0;">${h.bookTitle}</h3>
-      <p style="font-family: Helvetica, Arial, sans-serif; color: #444444; margin: 10px 0;">${h.content}</p>
-      <small style="font-family: Helvetica, Arial, sans-serif; color: #888888;">${h.details}</small>
-    </div>`
-  )
-  .join("");
 
-
-  // Insert the highlights into the HTML template.
-  html = generateHTML(highlights);
+  // Generate the HTML content for the email.
+  const html = generateHTML(highlights);
   // Send the email.
   await transporter.sendMail({
     to: RECEIVING_EMAIL,

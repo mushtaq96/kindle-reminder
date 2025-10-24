@@ -11,7 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.3",
-    "mjml": "^4.16.1",
     "nodemailer": "^6.8.0"
   },
   "devDependencies": {
