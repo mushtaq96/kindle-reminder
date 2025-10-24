@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
   schedule:
-    - cron: "0 4 * * *" # same as your current daily schedule
+    - cron: "0 4 * * *" # same as the daily schedule
 
 jobs:
   compile-mjml:
@@ -15,6 +15,6 @@ jobs:
         with:
           node-version: "20.x"
       - name: Install dependencies
-        run: npm ci
+        run: pnpm i --no-frozen-lockfile
       - name: Compile MJML to HTML
         run: npx mjml src/templates/email.mjml -o src/templates/build/email.html
