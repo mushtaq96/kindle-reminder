@@ -23,7 +23,12 @@
     </mj-section>
 
     <mj-section background-color="#FFF8F0" padding="10px 20px">
+      <mj-column> {{highlights}} </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#FFF8F0" padding="10px 20px">
       <mj-column>
+        {{header}}
         <!-- Highlights loop will inject here -->
         {{highlights}}
       </mj-column>

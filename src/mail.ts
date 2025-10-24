@@ -22,12 +22,21 @@ export const email = async (highlights: Highlight[]) => {
   .map(
     (h) => `
     <div style="margin-bottom: 20px; padding: 10px; background:#FFF8F0; border-radius:8px;">
-      <h3 style="font-family: Helvetica, Arial, sans-serif; color: #5E5E5E; margin: 0 0 5px 0;">${h.bookTitle}</h3>
-      <p style="font-family: Helvetica, Arial, sans-serif; color: #777777; margin:0;">${h.content}</p>
+      <h3 style="font-family: Helvetica, Arial, sans-serif; color: #333333; margin: 0;">${h.bookTitle}</h3>
+      <p style="font-family: Helvetica, Arial, sans-serif; color: #444444; margin: 10px 0;">${h.content}</p>
+      <small style="font-family: Helvetica, Arial, sans-serif; color: #888888;">${h.details}</small>
     </div>`
   )
   .join("");
 
+  const now = new Date();
+  const formattedDate = now.toLocaleDateString('en-US', {
+    weekday: 'short',
+    month: 'short',
+    day: 'numeric'
+  });
+  const header = `<p style="text-align:center; color:#777; font-size:13px; margin-top:0;">${formattedDate} • Revisit, Reflect, Grow</p>`;
+  html = html.replace("{{header}}", header);
   // Insert the highlights into the HTML template.
   html = html.replace("{{highlights}}", highlightHTML);
   // Send the email.
