@@ -1,51 +1,40 @@
-<mjml>
-  <mj-head>
-    <mj-preview>Your Kindle Highlights</mj-preview>
-    <mj-attributes>
-      <mj-all font-family="Helvetica, Arial, sans-serif"></mj-all>
-      <mj-text font-size="14px" color="#444444" line-height="1.6"></mj-text>
-    </mj-attributes>
-  </mj-head>
+<mj-body background-color="#F5F5F5">
+  <mj-section background-color="#FFFFFF">
+    <mj-column>
+      <mj-image
+        width="50px"
+        src="https://raw.githubusercontent.com/mushtaq96/kindle-reminder/main/logo.png"
+        alt="Logo"
+      />
+      <mj-divider border-width="1px" border-color="#E0E0E0" />
+      <mj-text
+        align="center"
+        font-size="20px"
+        color="#2c3e50"
+        font-weight="bold"
+      >
+        📚 Thought Gems from Your Kindle
+      </mj-text>
+    </mj-column>
+  </mj-section>
 
-  <mj-body background-color="#F5F5F5">
-    <mj-section background-color="#FFFFFF">
-      <mj-column>
-        <mj-image
-          width="50px"
-          src="https://raw.githubusercontent.com/mushtaq96/kindle-reminder/main/logo.png"
-          alt="Logo"
-        />
-        <mj-divider border-width="1px" border-color="#E0E0E0" />
-        <mj-text
-          align="center"
-          font-size="20px"
-          color="#2c3e50"
-          font-weight="bold"
+  <mj-section background-color="#FFF8F0" padding="10px 20px">
+    <mj-column>
+      <mj-raw>{{header}}</mj-raw>
+      <mj-raw>{{highlights}}</mj-raw>
+    </mj-column>
+  </mj-section>
+
+  <mj-section background-color="#F5F5F5">
+    <mj-column>
+      <mj-divider border-width="1px" border-color="#DADADA" />
+      <mj-text align="center" font-size="12px" color="#888888">
+        Sent by Kindle Reminder • <a
+          href="https://github.com/mushtaq96/kindle-reminder"
+          style="color: #888888"
+          >GitHub</a
         >
-          📚 Thought Gems from Your Kindle
-        </mj-text>
-      </mj-column>
-    </mj-section>
-
-    <mj-section background-color="#FFF8F0" padding="10px 20px">
-      <mj-column>
-        {{header}}
-        <!-- Highlights loop will inject here -->
-        {{highlights}}
-      </mj-column>
-    </mj-section>
-
-    <mj-section background-color="#F5F5F5">
-      <mj-column>
-        <mj-divider border-width="1px" border-color="#DADADA" />
-        <mj-text align="center" font-size="12px" color="#888888">
-          Sent by Kindle Reminder • <a
-            href="https://github.com/mushtaq96/kindle-reminder"
-            style="color: #888888"
-            >GitHub</a
-          >
-        </mj-text>
-      </mj-column>
-    </mj-section>
-  </mj-body>
-</mjml>
+      </mj-text>
+    </mj-column>
+  </mj-section>
+</mj-body>
