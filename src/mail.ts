@@ -14,20 +14,9 @@ export const email = async (highlights: Highlight[]) => {
     service: "gmail",
     auth: { user: SENDER_EMAIL, pass: SENDER_APP_PASSWORD },
   });
-  // Read the HTML email template.
-  const htmlTemplatePath = path.join("src/templates/build/email.html");
-  let html = readFileSync(htmlTemplatePath, "utf-8");
-  // Construct the highlights HTML.
-  const highlightHTML = highlights
-    .map(
-      (h) => `<mj-section><mj-column>
-        <mj-text font-size="18px" color="#5E5E5E">${h.bookTitle}</mj-text>
-        <mj-text color="#777777">${h.content}</mj-text>
-      </mj-column></mj-section>`
-    )
-    .join("");
-  // Insert the highlights into the HTML template.
-  html = html.replace("{{highlights}}", highlightHTML);
+
+  // Generate the HTML content for the email.
+  const html = generateHTML(highlights);
   // Send the email.
   await transporter.sendMail({
     to: RECEIVING_EMAIL,
@@ -36,4 +25,56 @@ export const email = async (highlights: Highlight[]) => {
   });
 
   console.log("Email sent.");
+};
+
+const generateHTML = (highlights: Highlight[]) => {
+  const now = new Date();
+  const formattedDate = now.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+  const header = `<p style="text-align:center; color:#777; font-size:13px; margin:0;">${formattedDate} • Revisit, Reflect, Grow</p>`;
+
+  const highlightsHTML = highlights
+    .map((h) => `
+      <tr>
+        <td style="padding:10px 25px;">
+          <div style="font-family:Helvetica,Arial,sans-serif;font-size:18px;color:#333;margin:0;">${h.bookTitle}</div>
+          <div style="font-family:Helvetica,Arial,sans-serif;font-size:15px;color:#555;line-height:1.5;margin:8px 0;">${h.content}</div>
+          <div style="font-family:Helvetica,Arial,sans-serif;font-size:13px;color:#888;">${h.details}</div>
+        </td>
+      </tr>
+    `)
+    .join("");
+
+  return `
+    <!DOCTYPE html>
+    <html>
+    <body style="background-color:#F5F5F5; margin:0; padding:0; font-family:Helvetica,Arial,sans-serif; color:#333; line-height:1.5;">
+      <table align="center" width="100%" style="max-width:600px; background-color:#ffffff; margin:30px auto; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.04);">
+        <tr>
+          <td align="center" style="padding:24px 20px 16px;">
+            <img src="https://raw.githubusercontent.com/mushtaq96/kindle-reminder/main/logo.png" width="50" alt="Logo" style="display:block;margin:0 auto 15px;">
+            <div style="font-size:22px; font-weight:700; color:#2d2b28; letter-spacing:-0.3px;">📚 Thought Gems from Your Kindle</div>
+            <div style="font-size:13px; color:#8b8581; margin-top:6px;">${formattedDate} • Revisit • Reflect • Grow</div>
+          </td>
+        </tr>
+      </table>
+
+      <table align="center" width="100%" style="max-width:600px; background-color:#fdfbf8; margin:0 auto 24px; padding:0;">
+        ${highlightsHTML}
+      </table>
+
+      <table align="center" width="100%" style="max-width:600px; text-align:center; color:#9c958f; font-size:12px;">
+        <tr>
+          <td style="padding:12px;">
+            Sent with care by Kindle Reminder<br>
+            <a href="https://github.com/mushtaq96/kindle-reminder" style="color:#9c958f; text-decoration:underline;">Private • Open Source • Yours</a>
+          </td>
+        </tr>
+      </table>
+    </body>
+    </html>
+  `;
 };

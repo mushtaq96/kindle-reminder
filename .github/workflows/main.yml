@@ -26,9 +26,6 @@ jobs:
       - name: Install Node.js dependencies
         run: pnpm i --no-frozen-lockfile
 
-      - name: Compile MJML to HTML
-        run: npx mjml src/templates/email.mjml -o src/templates/build/email.html
-
       - name: Send Kindle Highlights
         env:
           SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
