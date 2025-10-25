@@ -51,10 +51,11 @@ const generateHTML = (highlights: Highlight[]) => {
   return `
     <!DOCTYPE html>
     <html>
-    <body style="background-color:#faf9f6; margin:0; padding:0; font-family:Helvetica,Arial,sans-serif; color:#333; line-height:1.5;">
+    <body style="background-color:#F5F5F5; margin:0; padding:0; font-family:Helvetica,Arial,sans-serif; color:#333; line-height:1.5;">
       <table align="center" width="100%" style="max-width:600px; background-color:#ffffff; margin:30px auto; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.04);">
         <tr>
           <td align="center" style="padding:24px 20px 16px;">
+            <img src="https://raw.githubusercontent.com/mushtaq96/kindle-reminder/main/logo.png" width="50" alt="Logo" style="display:block;margin:0 auto 15px;">
             <div style="font-size:22px; font-weight:700; color:#2d2b28; letter-spacing:-0.3px;">📚 Thought Gems from Your Kindle</div>
             <div style="font-size:13px; color:#8b8581; margin-top:6px;">${formattedDate} • Revisit • Reflect • Grow</div>
           </td>
